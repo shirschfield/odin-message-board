@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      .message {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+      }
+      .message-text {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .message-info {
+        display: flex;
+        justify-content: space-between;
+        color: #666;
+        font-size: 14px;
+      }
+      .new-message-btn {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .new-message-btn:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    
+    <a href="/new" class="new-message-btn">Add New Message</a>
+    
+    <% if (messages.length === 0) { %>
+      <p>No messages yet. Be the first to post!</p>
+    <% } else { %>
+      <% messages.forEach(function(message) { %>
+        <div class="message">
+          <div class="message-text"><%= message.text %></div>
+          <div class="message-info">
+            <span>Posted by: <%= message.user %></span>
+            <span><%= message.added.toLocaleString() %></span>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  </body>
+</html>
